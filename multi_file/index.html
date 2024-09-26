@@ -1,0 +1,171 @@
+<!--
+  File: index.html
+  Purpose: Serves as the main interface for users to concatenate PDF files and create a cover page with links.
+  Attributes:
+    - Links to external CSS files for styling.
+    - Links to external JavaScript files for functionality.
+    - Contains HTML elements for user input and preview.
+  Customization:
+    - Modify the HTML structure to add or remove features.
+    - Update class names or IDs as needed.
+    - Change the linked CSS or JS files for different styles or functionalities.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Cat 🐱: Concatenate Your PDFs and Make a Cover Page! 😊</title>
+  <meta name="description" content="Concatenate multiple PDF files and create a cover page with links using PDF Cat.">
+  <meta name="keywords" content="PDF, concatenate, merge PDFs, PDF tool, PDF Cat">
+  
+  <!-- Google Fonts for Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Link to External CSS Files -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  
+  <!-- 
+    Container: Holds all the main content of the page.
+    Uses flexbox for layout.
+  -->
+  <div class="container">
+    
+    <!-- 
+      Header Section:
+      Contains the main title and a descriptive list of applications.
+    -->
+    <header>
+      <h1>PDF Cat 🐱: Concatenate Your PDFs and Make a Cover Page! 😊</h1>
+      <div class="description">
+        <p>Effortlessly merge your PDF files and create a stylish cover page with clickable links. Perfect for:</p>
+        <ul>
+          <li>📚 Academic submissions</li>
+          <li>📝 Professional portfolios</li>
+          <li>📄 Business reports</li>
+          <li>🎓 Thesis compilations</li>
+          <li>📑 Project documentation</li>
+        </ul>
+      </div>
+    </header>
+    
+    <!-- 
+      Main Content Section:
+      Split into Form Section and Preview Section.
+    -->
+    <main class="content">
+      
+      <!-- 
+        Form Section:
+        Contains all the input fields and buttons for user interactions.
+      -->
+      <section class="form-section">
+        
+        <!-- 
+          Output File Name:
+          Input field for specifying the name of the merged PDF.
+        -->
+        <div class="section output-name-container">
+          <label for="output-name"><strong>Output File Name:</strong></label>
+          <input type="text" id="output-name" placeholder="Enter output file name (e.g., merged_documents.pdf)" value="merged.pdf">
+        </div>
+        
+        <!-- 
+          Cover Title:
+          Input field for specifying the title of the cover page.
+        -->
+        <div class="section cover-title-container">
+          <label for="cover-title"><strong>Cover Title:</strong></label>
+          <input type="text" id="cover-title" placeholder="Enter title for the cover page" value="This is an example title">
+        </div>
+        
+        <!-- 
+          Cover Description:
+          Textarea for adding a description to the cover page.
+        -->
+        <div class="section cover-description-container">
+          <label for="cover-description"><strong>Enter Description for Cover Page:</strong></label>
+          <textarea id="cover-description" rows="5" placeholder="Enter description...">This is an example description. This is the application for PHD position at ... lab .....</textarea>
+        </div>
+        
+        <!-- 
+          File Upload Section:
+          Input field for selecting multiple PDF files.
+        -->
+        <div class="section file-input-container">
+          <label><strong>Select PDF Files:</strong></label>
+          <input type="file" id="file-input" multiple accept="application/pdf">
+        </div>
+        
+        <!-- 
+          Selected Files Section:
+          Displays files selected by the user before adding them to the main list.
+        -->
+        <div class="section selected-files-container">
+          <h2>Selected Files</h2>
+          <div id="selected-files-list">
+            <!-- Selected files with name inputs will appear here -->
+          </div>
+          <button id="add-files" class="button">Add Files</button>
+        </div>
+        
+        <!-- 
+          File List Section:
+          Displays the list of added files with options to rename or remove.
+        -->
+        <div id="file-list" class="section">
+          <h2>Added Files</h2>
+          <!-- Added files with name inputs and remove buttons will appear here -->
+        </div>
+        
+        <!-- 
+          Generate PDF Button:
+          Triggers the PDF generation process.
+        -->
+        <button id="generate-pdf" class="button">Generate PDF</button>
+        
+        <!-- 
+          Output Section:
+          Displays the download link for the generated PDF.
+        -->
+        <div id="output"></div>
+        
+      </section>
+      
+      <!-- 
+        Preview Section:
+        Shows a live preview of the cover page based on user inputs.
+      -->
+      <section class="preview-section">
+        <h2>Cover Page Preview</h2>
+        <div class="preview-box" id="cover-preview">
+          <h2 id="preview-title">This is an example title</h2>
+          <p id="preview-description">This is an example description. This is the application for PHD position at ... lab .....</p>
+          <div class="category-heading">Category</div>
+          <ul class="category-list" id="preview-categories">
+            <!-- Categories will be dynamically added here -->
+          </ul>
+        </div>
+      </section>
+      
+    </main>
+    
+  </div>
+  
+  <!-- 
+    External JavaScript Libraries:
+    Includes the pdf-lib library for PDF manipulation.
+  -->
+  <script src="libs/pdf-lib.min.js"></script>
+  
+  <!-- 
+    Main JavaScript File:
+    Handles DOM interactions and delegates PDF processing to pdf-handler.js.
+  -->
+  <script type="module" src="js/main.js"></script>
+  
+</body>
+</html>
