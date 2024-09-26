@@ -1,0 +1,588 @@
+/* 
+  File: css/styles.css
+  Purpose: Contains the main styling rules for the PDF Cat website.
+  Description: Defines layout, typography, colors, and styles for various components.
+  Customization:
+    - Modify color variables to change the theme.
+    - Adjust font sizes and weights for different elements.
+    - Update spacing (margins and paddings) to alter the layout.
+    - Add or remove styles for new components as needed.
+*/
+
+/* 
+  ==============================================
+  1. CSS Reset and Box Sizing
+  ==============================================
+*/
+
+/* 
+  Reset default browser styles to ensure consistency across different browsers.
+*/
+* {
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+    margin: 0; /* Removes default margins */
+    padding: 0; /* Removes default padding */
+  }
+  
+  /* 
+    ==============================================
+    2. Root Variables
+    ==============================================
+  */
+  
+  /* 
+    Define CSS variables for colors, fonts, and other reusable values.
+    This allows easy theming and maintenance.
+  */
+  :root {
+    /* Color Palette */
+    --primary-color: #3498db; /* Blue */
+    --primary-hover: #2980b9; /* Darker Blue */
+    --secondary-color: #2c3e50; /* Dark Slate */
+    --text-color: #333333; /* Dark Gray */
+    --background-color: #ffffff; /* White */
+    --light-gray: #f4f6f8; /* Light Gray Background */
+    --border-color: #e0e0e0; /* Light Border */
+    --error-color: #e74c3c; /* Red for errors */
+    --success-color: #2ecc71; /* Green for success messages */
+    
+    /* Font Sizes */
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 24px;
+    
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+    --spacing-xlarge: 40px;
+  }
+  
+  /* 
+    ==============================================
+    3. Base Styles
+    ==============================================
+  */
+  
+  /* 
+    Body Styles:
+    Sets the base font, background color, text color, and overall padding.
+  */
+  body {
+    font-family: 'Roboto', sans-serif; /* Sets the primary font */
+    background-color: var(--background-color); /* White background */
+    color: var(--text-color); /* Dark gray text */
+    padding: var(--spacing-xlarge); /* Large padding around the content */
+    line-height: 1.6; /* Improves readability */
+  }
+  
+  /* 
+    Anchor Tags:
+    Styles for all links to ensure consistency.
+  */
+  a {
+    color: var(--primary-color); /* Blue color for links */
+    text-decoration: none; /* Removes underline */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  a:hover {
+    color: var(--primary-hover); /* Darker blue on hover */
+    text-decoration: underline; /* Underline on hover for better indication */
+  }
+  
+  /* 
+    Heading Styles:
+    Defines styles for h1 through h6 elements.
+  */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', serif; /* Serif font for headings */
+    color: var(--secondary-color); /* Dark slate color for headings */
+    margin-bottom: var(--spacing-medium); /* Space below headings */
+  }
+  
+  h1 {
+    font-size: 2.25rem; /* 36px */
+  }
+  
+  h2 {
+    font-size: 1.75rem; /* 28px */
+  }
+  
+  h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+  
+  h4 {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  h5 {
+    font-size: 1rem; /* 16px */
+  }
+  
+  h6 {
+    font-size: 0.875rem; /* 14px */
+  }
+  
+  /* 
+    Paragraph Styles:
+    Ensures consistent spacing and font size for paragraphs.
+  */
+  p {
+    font-size: var(--font-size-medium); /* 16px */
+    margin-bottom: var(--spacing-medium); /* Space below paragraphs */
+  }
+  
+  /* 
+    ==============================================
+    4. Layout Styles
+    ==============================================
+  */
+  
+  /* 
+    Container:
+    Centers the content and sets a maximum width.
+  */
+  .container {
+    max-width: 1400px; /* Maximum width for large screens */
+    margin: 0 auto; /* Centers the container */
+    background-color: var(--light-gray); /* Light gray background */
+    padding: var(--spacing-xlarge); /* Large padding inside the container */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* 
+    Content:
+    Flex container to arrange form and preview sections side by side.
+  */
+  .content {
+    display: flex; /* Uses Flexbox for layout */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: var(--spacing-xlarge); /* Space between flex items */
+  }
+  
+  /* 
+    Section Styles:
+    Adds consistent spacing between different sections.
+  */
+  .section {
+    margin-bottom: var(--spacing-large); /* Space below each section */
+  }
+  
+  /* 
+    Header Styles:
+    Centers the header content and adds spacing.
+  */
+  header {
+    text-align: center; /* Centers text */
+    margin-bottom: var(--spacing-xlarge); /* Space below the header */
+  }
+  
+  /* 
+    Description:
+    Styles the descriptive paragraph and list in the header.
+  */
+  .description {
+    font-size: var(--font-size-medium); /* 16px */
+    color: #555555; /* Medium gray text */
+  }
+  
+  .description ul {
+    list-style: none; /* Removes default list styles */
+    padding: 0; /* Removes padding */
+    margin-top: var(--spacing-medium); /* Space above the list */
+  }
+  
+  .description ul li {
+    display: flex; /* Aligns items horizontally */
+    align-items: center; /* Vertically centers items */
+    justify-content: center; /* Horizontally centers items */
+    margin-bottom: var(--spacing-small); /* Space below each list item */
+    font-size: var(--font-size-medium); /* 16px */
+    color: #555555; /* Medium gray text */
+  }
+  
+  .description ul li::before {
+    content: '✅'; /* Adds a checkmark emoji before each list item */
+    margin-right: var(--spacing-small); /* Space between emoji and text */
+  }
+  
+  /* 
+    ==============================================
+    5. Form Section Styles
+    ==============================================
+  */
+  
+  /* 
+    Form Section:
+    Styles the section containing form inputs and buttons.
+  */
+  .form-section {
+    flex: 1 1 500px; /* Flex grow, shrink, and basis */
+    padding: var(--spacing-medium); /* Padding inside the form section */
+    border-right: 1px solid var(--border-color); /* Right border */
+  }
+  
+  /* 
+    Output Name, Cover Title, and Cover Description Containers:
+    Styles input fields and labels.
+  */
+  .output-name-container,
+  .cover-title-container,
+  .cover-description-container {
+    display: flex; /* Uses Flexbox */
+    flex-direction: column; /* Stacks elements vertically */
+    margin-bottom: var(--spacing-large); /* Space below each container */
+  }
+  
+  .output-name-container label,
+  .cover-title-container label,
+  .cover-description-container label {
+    font-weight: 700; /* Bold labels */
+    margin-bottom: var(--spacing-small); /* Space below labels */
+  }
+  
+  .output-name-container input,
+  .cover-title-container input,
+  .cover-description-container textarea {
+    padding: var(--spacing-small); /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    font-size: var(--font-size-medium); /* 16px */
+    transition: border-color 0.3s ease; /* Smooth border color transition on focus */
+  }
+  
+  .output-name-container input:focus,
+  .cover-title-container input:focus,
+  .cover-description-container textarea:focus {
+    border-color: var(--primary-color); /* Blue border on focus */
+    outline: none; /* Removes default outline */
+  }
+  
+  /* 
+    File Input Container:
+    Styles the file input area with dashed border and hover effects.
+  */
+  .file-input-container {
+    display: flex; /* Uses Flexbox */
+    flex-direction: column; /* Stacks elements vertically */
+    margin-bottom: var(--spacing-large); /* Space below the container */
+  }
+  
+  .file-input-container label {
+    font-weight: 700; /* Bold label */
+    margin-bottom: var(--spacing-small); /* Space below label */
+  }
+  
+  .file-input-container input[type="file"] {
+    padding: var(--spacing-small); /* Padding inside the file input */
+    border: 2px dashed var(--primary-color); /* Dashed blue border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    background-color: var(--background-color); /* White background */
+  }
+  
+  .file-input-container input[type="file"]:hover {
+    border-color: var(--primary-hover); /* Darker blue border on hover */
+    background-color: #f0f8ff; /* Light blue background on hover */
+  }
+  
+  /* 
+    Selected Files Container:
+    Styles the section displaying selected files before adding them to the main list.
+  */
+  .selected-files-container {
+    margin-bottom: var(--spacing-large); /* Space below the container */
+  }
+  
+  .selected-files-container h2 {
+    font-size: var(--font-size-large); /* 18px */
+    margin-bottom: var(--spacing-medium); /* Space below the heading */
+    color: var(--secondary-color); /* Dark slate color */
+  }
+  
+  #selected-files-list {
+    margin-bottom: var(--spacing-medium); /* Space below the selected files list */
+  }
+  
+  /* 
+    Add Files Button:
+    Styles the button to add selected files to the main list.
+  */
+  .button {
+    padding: 14px 24px; /* Vertical and horizontal padding */
+    font-size: var(--font-size-medium); /* 16px */
+    background-color: var(--primary-color); /* Blue background */
+    color: var(--background-color); /* White text */
+    border: none; /* Removes default border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    align-self: flex-start; /* Aligns the button to the start of the container */
+  }
+  
+  .button:hover {
+    background-color: var(--primary-hover); /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+  }
+  
+  .button:active {
+    transform: translateY(0); /* Resets position on active state */
+  }
+  
+  /* 
+    File Item:
+    Styles individual file items in the selected and added files lists.
+  */
+  .file-item {
+    display: flex; /* Uses Flexbox */
+    align-items: center; /* Vertically centers items */
+    justify-content: space-between; /* Spaces items apart */
+    margin-bottom: var(--spacing-small); /* Space below each file item */
+    padding: var(--spacing-small); /* Padding inside each file item */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    background-color: var(--background-color); /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  }
+  
+  .file-item label {
+    flex: 3; /* Takes up three parts of the available space */
+    font-weight: 500; /* Medium font weight */
+    margin-right: var(--spacing-small); /* Space between label and input */
+    color: var(--secondary-color); /* Dark slate color */
+  }
+  
+  .file-item input[type="text"] {
+    flex: 2; /* Takes up two parts of the available space */
+    padding: var(--spacing-small); /* Padding inside the input */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    margin-right: var(--spacing-small); /* Space between input and button */
+    font-size: var(--font-size-medium); /* 16px */
+    transition: border-color 0.3s ease; /* Smooth border color transition on focus */
+  }
+  
+  .file-item input[type="text"]:focus {
+    border-color: var(--primary-color); /* Blue border on focus */
+    outline: none; /* Removes default outline */
+  }
+  
+  .remove-button {
+    padding: 6px 14px; /* Vertical and horizontal padding */
+    font-size: var(--font-size-small); /* 14px */
+    background-color: var(--error-color); /* Red background */
+    color: var(--background-color); /* White text */
+    border: none; /* Removes default border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .remove-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+  }
+  
+  .remove-button:active {
+    transform: translateY(0); /* Resets position on active state */
+  }
+  
+  /* 
+    ==============================================
+    6. Preview Section Styles
+    ==============================================
+  */
+  
+  /* 
+    Preview Section:
+    Styles the section displaying the live preview of the cover page.
+  */
+  .preview-section {
+    flex: 1 1 500px; /* Flex grow, shrink, and basis */
+    padding: var(--spacing-medium); /* Padding inside the preview section */
+    display: flex; /* Uses Flexbox */
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Centers elements horizontally */
+  }
+  
+  /* 
+    Preview Box:
+    Styles the box that displays the live preview of the cover page.
+  */
+  .preview-box {
+    width: 100%; /* Full width of the container */
+    max-width: 500px; /* Maximum width for large screens */
+    height: 650px; /* Fixed height */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: var(--spacing-large); /* Padding inside the preview box */
+    background-color: var(--background-color); /* White background */
+    position: relative; /* Positions elements relative to the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Hides overflow content */
+    display: flex; /* Uses Flexbox */
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Centers elements horizontally */
+  }
+  
+  .preview-box h2 {
+    font-size: 2rem; /* 32px */
+    font-family: 'Libre Baskerville', serif; /* Serif font */
+    text-align: center; /* Centers text */
+    margin-bottom: var(--spacing-small); /* Space below the title */
+    color: var(--secondary-color); /* Dark slate color */
+  }
+  
+  .preview-box p {
+    font-size: var(--font-size-medium); /* 16px */
+    text-align: center; /* Centers text */
+    margin-bottom: var(--spacing-medium); /* Space below the description */
+    color: #34495e; /* Medium slate color */
+  }
+  
+  .preview-box .category-heading {
+    font-size: 1.5rem; /* 24px */
+    font-family: 'Libre Baskerville', serif; /* Serif font */
+    text-align: center; /* Centers text */
+    margin-bottom: var(--spacing-small); /* Space below the heading */
+    color: var(--secondary-color); /* Dark slate color */
+  }
+  
+  .preview-box .category-list {
+    list-style: none; /* Removes default list styles */
+    padding: 0; /* Removes padding */
+    width: 100%; /* Full width of the preview box */
+  }
+  
+  .preview-box .category-list li {
+    font-size: 1.25rem; /* 20px */
+    color: var(--primary-color); /* Blue color */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-bottom: var(--spacing-small); /* Space below each list item */
+    text-align: center; /* Centers the list items */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  .preview-box .category-list li:hover {
+    color: var(--primary-hover); /* Darker blue on hover */
+    text-decoration: underline; /* Underline on hover for better indication */
+  }
+  
+  /* 
+    ==============================================
+    7. Output Section Styles
+    ==============================================
+  */
+  
+  /* 
+    Output Section:
+    Styles the section displaying the download link for the generated PDF.
+  */
+  #output {
+    text-align: center; /* Centers the content */
+    margin-top: var(--spacing-medium); /* Space above the output section */
+  }
+  
+  #output a {
+    text-decoration: none; /* Removes underline */
+    color: var(--background-color); /* White text */
+    background-color: var(--success-color); /* Green background */
+    padding: 14px 24px; /* Vertical and horizontal padding */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    font-size: var(--font-size-medium); /* 16px */
+    display: inline-block; /* Allows setting width and height */
+  }
+  
+  #output a:hover {
+    background-color: #27ae60; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+  }
+  
+  #output a:active {
+    transform: translateY(0); /* Resets position on active state */
+  }
+  
+  /* 
+    ==============================================
+    8. Footer Styles
+    ==============================================
+  */
+  
+  /* 
+    Footer:
+    Styles the footer section with centered text.
+  */
+  footer {
+    text-align: center; /* Centers text */
+    margin-top: var(--spacing-xlarge); /* Space above the footer */
+    font-size: var(--font-size-small); /* 14px */
+    color: #777777; /* Light gray text */
+  }
+  
+  /* 
+    ==============================================
+    9. Miscellaneous Styles
+    ==============================================
+  */
+  
+  /* 
+    Textarea Styles:
+    Enhances the appearance of textarea elements.
+  */
+  textarea {
+    width: 100%; /* Full width of the container */
+    padding: var(--spacing-small); /* Padding inside the textarea */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 6px; /* Rounded corners */
+    resize: vertical; /* Allows vertical resizing */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    font-size: var(--font-size-medium); /* 16px */
+    transition: border-color 0.3s ease; /* Smooth border color transition on focus */
+  }
+  
+  textarea:focus {
+    border-color: var(--primary-color); /* Blue border on focus */
+    outline: none; /* Removes default outline */
+  }
+  
+  /* 
+    ==============================================
+    10. Utility Classes
+    ==============================================
+  */
+  
+  /* 
+    Utility classes can be added here for reusable styles.
+    Example: .text-center, .mt-20, .mb-20, etc.
+  */
+  
+  /* 
+    .text-center: Centers text.
+  */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* 
+    .mt-20: Adds a top margin of 20px.
+  */
+  .mt-20 {
+    margin-top: 20px;
+  }
+  
+  /* 
+    .mb-20: Adds a bottom margin of 20px.
+  */
+  .mb-20 {
+    margin-bottom: 20px;
+  }
+  
+  /* 
+    Add more utility classes as needed for your project.
+  */

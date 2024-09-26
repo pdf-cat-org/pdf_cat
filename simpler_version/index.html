@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Cat 🐱: Concatenate Your PDFs and Make a Cover Page! 😊</title>
+  <meta name="description" content="Concatenate multiple PDF files and create a cover page with links using PDF Cat.">
+  <meta name="keywords" content="PDF, concatenate, merge PDFs, PDF tool, PDF Cat">
+  <!-- Google Fonts for Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 36px;
+      color: #2c3e50;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1400px; /* Increased max-width for larger previews */
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .form-section, .preview-section {
+      flex: 1 1 500px; /* Increased flex-basis for larger preview */
+      padding: 20px;
+    }
+    .form-section {
+      border-right: 1px solid #e0e0e0;
+    }
+    .section {
+      margin-bottom: 25px;
+    }
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #34495e;
+    }
+    .file-input-container, .output-name-container, .cover-title-container, .cover-description-container, .selected-files-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .file-input-container input[type="file"] {
+      padding: 10px;
+      border: 2px dashed #3498db;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .file-input-container input[type="file"]:hover {
+      border-color: #2980b9;
+    }
+    .button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+      align-self: flex-start;
+    }
+    .button:hover {
+      background-color: #2980b9;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .file-item label {
+      flex: 3;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+    .file-item input[type="text"] {
+      flex: 2;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .remove-button {
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .remove-button:hover {
+      background-color: #c0392b;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: 'Roboto', sans-serif;
+    }
+    #output {
+      text-align: center;
+      margin-top: 20px;
+    }
+    #output a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #2ecc71;
+      padding: 12px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    #output a:hover {
+      background-color: #27ae60;
+    }
+    /* Preview Section Styles */
+    .preview-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .preview-box {
+      width: 100%;
+      max-width: 500px; /* Increased width */
+      height: 600px; /* Increased height */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #fafafa;
+      position: relative;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .preview-box h2 {
+      font-size: 30px; /* Increased font size for better visibility */
+      font-family: 'Libre Baskerville', serif;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .preview-box p {
+      font-size: 16px; /* Increased font size */
+      text-align: center;
+      margin-bottom: 30px;
+      color: #34495e;
+    }
+    .preview-box .category-heading {
+      font-size: 24px; /* Consistent with PDF cover page */
+      font-family: 'Libre Baskerville', serif;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .preview-box .category-list {
+      list-style: none;
+      padding: 0;
+    }
+    .preview-box .category-list li {
+      font-size: 18px; /* Increased font size */
+      color: #3498db;
+      cursor: pointer;
+      margin-bottom: 10px;
+      text-align: center; /* Center the list items */
+    }
+    .preview-box .category-list li:hover {
+      text-decoration: underline;
+    }
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .container {
+        flex-direction: column;
+      }
+      .form-section {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PDF Cat 🐱: Concatenate Your PDFs and Make a Cover Page! 😊</h1>
+
+  <div class="container">
+    <!-- Form Section -->
+    <div class="form-section">
+      <!-- Output File Name Section -->
+      <div class="section output-name-container">
+        <label for="output-name"><strong>Output File Name:</strong></label>
+        <input type="text" id="output-name" placeholder="Enter output file name (e.g., merged_documents.pdf)" value="merged.pdf">
+      </div>
+
+      <!-- Cover Title Section -->
+      <div class="section cover-title-container">
+        <label for="cover-title"><strong>Cover Title:</strong></label>
+        <input type="text" id="cover-title" placeholder="Enter title for the cover page" value="This is an example title">
+      </div>
+
+      <!-- Cover Description Section -->
+      <div class="section cover-description-container">
+        <label for="cover-description"><strong>Enter Description for Cover Page:</strong></label>
+        <textarea id="cover-description" rows="5" placeholder="Enter description...">This is an example description. This is the application for PHD position at ... lab .....</textarea>
+      </div>
+
+      <!-- File Upload Section -->
+      <div class="section file-input-container">
+        <label><strong>Select PDF Files:</strong></label>
+        <input type="file" id="file-input" multiple accept="application/pdf">
+      </div>
+
+      <!-- Selected Files Section -->
+      <div class="section selected-files-container">
+        <h2>Selected Files</h2>
+        <div id="selected-files-list">
+          <!-- Selected files with name inputs will appear here -->
+        </div>
+        <button id="add-files" class="button">Add Files</button>
+      </div>
+
+      <!-- File List Section -->
+      <div id="file-list" class="section">
+        <h2>Added Files</h2>
+        <!-- Added files with name inputs and remove buttons will appear here -->
+      </div>
+
+      <!-- Generate PDF Button -->
+      <button id="generate-pdf" class="button">Generate PDF</button>
+
+      <!-- Output Section -->
+      <div id="output"></div>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <h2>Cover Page Preview</h2>
+      <div class="preview-box" id="cover-preview">
+        <h2 id="preview-title">This is an example title</h2>
+        <p id="preview-description">This is an example description. This is the application for PHD position at ... lab .....</p>
+        <div class="category-heading">Category</div> <!-- Added Category Heading -->
+        <ul class="category-list" id="preview-categories">
+          <!-- Categories will be dynamically added here -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include pdf-lib library -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
+

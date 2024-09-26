@@ -1,0 +1,347 @@
+/* 
+  File: css/responsive.css
+  Purpose: Contains responsive design rules to ensure the website is mobile-friendly and adapts to different screen sizes.
+  Description: Utilizes media queries to adjust layouts, font sizes, and component styles based on the viewport width.
+  Customization:
+    - Modify breakpoint values to target different screen sizes.
+    - Adjust styles within media queries to change how components behave on smaller screens.
+    - Add or remove media queries for additional responsiveness.
+*/
+
+/* 
+  ==============================================
+  1. Mobile First Approach
+  ==============================================
+*/
+
+/* 
+  Base styles are defined in styles.css.
+  responsive.css overrides or adds styles for larger screens.
+*/
+
+/* 
+  ==============================================
+  2. Tablet Devices
+  ==============================================
+*/
+
+/* 
+  Media Query for devices with a maximum width of 1200px (e.g., tablets).
+*/
+@media (max-width: 1200px) {
+  
+    /* 
+      Adjust the container padding for smaller screens.
+    */
+    .container {
+      padding: var(--spacing-large); /* Reduce padding */
+    }
+    
+    /* 
+      Adjust the main content layout to stack vertically.
+    */
+    .content {
+      flex-direction: column; /* Stack form and preview sections */
+    }
+    
+    /* 
+      Remove the right border from the form section.
+    */
+    .form-section {
+      border-right: none; /* Removes the right border */
+      border-bottom: 1px solid var(--border-color); /* Adds a bottom border */
+      padding-bottom: var(--spacing-large); /* Adds padding below the form section */
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    3. Mobile Devices
+    ==============================================
+  */
+  
+  /* 
+    Media Query for devices with a maximum width of 768px (e.g., smartphones).
+  */
+  @media (max-width: 768px) {
+    
+    /* 
+      Adjust the container padding for mobile devices.
+    */
+    .container {
+      padding: var(--spacing-medium); /* Further reduce padding */
+    }
+    
+    /* 
+      Adjust font sizes for better readability on small screens.
+    */
+    h1 {
+      font-size: 1.75rem; /* 28px */
+    }
+    
+    .description p {
+      font-size: var(--font-size-medium); /* 16px */
+    }
+    
+    .description ul li {
+      font-size: var(--font-size-medium); /* 16px */
+    }
+    
+    /* 
+      Adjust form section and preview section padding.
+    */
+    .form-section,
+    .preview-section {
+      padding: var(--spacing-small); /* Reduce padding */
+    }
+    
+    /* 
+      Adjust button sizes for easier tapping.
+    */
+    .button,
+    #output a {
+      padding: 12px 20px; /* Smaller padding */
+      font-size: 14px; /* Smaller font size */
+    }
+    
+    /* 
+      Adjust preview box for better visibility on small screens.
+    */
+    .preview-box {
+      max-width: 100%; /* Full width */
+      height: auto; /* Automatic height based on content */
+      padding: var(--spacing-medium); /* Reduce padding */
+    }
+    
+    .preview-box h2 {
+      font-size: 1.5rem; /* 24px */
+    }
+    
+    .preview-box p {
+      font-size: var(--font-size-medium); /* 16px */
+    }
+    
+    .preview-box .category-heading {
+      font-size: 1.25rem; /* 20px */
+    }
+    
+    .preview-box .category-list li {
+      font-size: 1rem; /* 16px */
+    }
+    
+    /* 
+      Adjust file item inputs and buttons for better usability on touch devices.
+    */
+    .file-item input[type="text"] {
+      font-size: var(--font-size-medium); /* 16px */
+    }
+    
+    .remove-button {
+      padding: 6px 12px; /* Smaller padding */
+      font-size: var(--font-size-small); /* 14px */
+    }
+    
+    /* 
+      Adjust textarea size for better usability.
+    */
+    .cover-description-container textarea {
+      font-size: var(--font-size-medium); /* 16px */
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    4. Extra Small Devices
+    ==============================================
+  */
+  
+  /* 
+    Media Query for devices with a maximum width of 480px (e.g., small smartphones).
+  */
+  @media (max-width: 480px) {
+    
+    /* 
+      Further adjust container padding.
+    */
+    .container {
+      padding: var(--spacing-small); /* Minimal padding */
+    }
+    
+    /* 
+      Adjust heading sizes for very small screens.
+    */
+    h1 {
+      font-size: 1.5rem; /* 24px */
+    }
+    
+    h2 {
+      font-size: 1.25rem; /* 20px */
+    }
+    
+    /* 
+      Adjust list item styles for better touch targets.
+    */
+    .description ul li,
+    .features-section ul li,
+    .benefits-section ul li,
+    .how-it-works-section ol li {
+      padding: var(--spacing-small); /* Increase padding for touch */
+    }
+    
+    /* 
+      Ensure buttons are full-width for easier tapping.
+    */
+    .button,
+    #output a {
+      width: 100%; /* Full width */
+      box-sizing: border-box; /* Includes padding in width */
+    }
+    
+    /* 
+      Adjust file-item layout to stack elements vertically.
+    */
+    .file-item {
+      flex-direction: column; /* Stack label, input, and button */
+      align-items: flex-start; /* Align items to the start */
+    }
+    
+    .file-item label,
+    .file-item input[type="text"],
+    .remove-button {
+      width: 100%; /* Full width */
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: var(--spacing-small); /* Space below elements */
+    }
+    
+    /* 
+      Adjust preview box height.
+    */
+    .preview-box {
+      height: auto; /* Automatic height based on content */
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    5. Orientation-Based Adjustments
+    ==============================================
+  */
+  
+  /* 
+    Media Query for devices in landscape orientation.
+  */
+  @media (orientation: landscape) and (max-width: 768px) {
+    
+    /* 
+      Adjust preview box to be smaller in landscape mode.
+    */
+    .preview-box {
+      max-width: 100%; /* Full width */
+      height: auto; /* Automatic height based on content */
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    6. High-Resolution Displays
+    ==============================================
+  */
+  
+  /* 
+    Media Query for devices with high-resolution displays.
+  */
+  @media 
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) { 
+    
+    /* 
+      Enhance image quality for high-resolution screens.
+    */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    7. Print Styles (Optional)
+    ==============================================
+  */
+  
+  /* 
+    Media Query for print layout.
+  */
+  @media print {
+    
+    /* 
+      Hide interactive elements like buttons and inputs.
+    */
+    .button,
+    input[type="file"],
+    input[type="text"],
+    textarea,
+    #output a,
+    .remove-button {
+      display: none; /* Hides these elements when printing */
+    }
+    
+    /* 
+      Adjust container for print layout.
+    */
+    .container {
+      box-shadow: none; /* Removes shadow */
+      border: none; /* Removes border */
+      padding: 0; /* Removes padding */
+      background-color: var(--background-color); /* Ensures background is white */
+    }
+    
+    /* 
+      Adjust text colors for print.
+    */
+    body {
+      color: #000000; /* Black text */
+    }
+    
+    /* 
+      Adjust headings and paragraphs for better print readability.
+    */
+    h1, h2, h3, h4, h5, h6, p {
+      color: #000000; /* Black text */
+    }
+    
+  }
+  
+  /* 
+    ==============================================
+    8. Additional Responsive Enhancements
+    ==============================================
+  */
+  
+  /* 
+    Example: Adjusting the preview section for specific screen sizes.
+  */
+  
+  /* 
+    Media Query for screens between 769px and 1200px.
+  */
+  @media (min-width: 769px) and (max-width: 1200px) {
+    
+    /* 
+      Adjust preview box size.
+    */
+    .preview-box {
+      max-width: 450px; /* Slightly smaller preview box */
+      height: 600px; /* Reduced height */
+    }
+    
+  }
+  
+  /* 
+    Add more media queries as needed to handle other specific scenarios.
+  */
