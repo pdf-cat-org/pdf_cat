@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Cat - Concatenate Your PDFs</title>
+  <meta name="description" content="Concatenate multiple PDF files and create a cover page with links using PDF Cat.">
+  <meta name="keywords" content="PDF, concatenate, merge PDFs, PDF tool, PDF Cat">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .file-input { margin-bottom: 10px; }
+    .file-item { margin-bottom: 5px; }
+    #output { margin-top: 20px; }
+    .button { padding: 10px 15px; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+  <h1>PDF Cat - Concatenate Your PDFs</h1>
+
+  <input type="file" id="file-input" multiple accept="application/pdf">
+  <button id="add-files" class="button">Add Files</button>
+
+  <div id="file-list"></div>
+
+  <button id="generate-pdf" class="button">Generate PDF</button>
+
+  <div id="output"></div>
+
+  <!-- Include pdf-lib library -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
